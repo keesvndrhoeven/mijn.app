@@ -3,174 +3,128 @@ import LanguageFlags from "@/components/LanguageFlags";
 
 const chips = [
   { label: "Multicultureel", dashed: false },
-  { label: "Flexibel", dashed: false },
+  { label: "Flexibel",       dashed: false },
   { label: "Snelle aanpasser", dashed: false },
-  { label: "ASL", dashed: true },
-  { label: "NGT", dashed: true },
-  { label: "PT-BR", dashed: false },
+  { label: "ASL",            dashed: true  },
+  { label: "NGT",            dashed: true  },
+  { label: "PT-BR",          dashed: false },
 ];
 
 const spokenBack = (
   <div>
-    <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem" }}>
+    <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "9px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#3B6D11", marginBottom: "0.6rem" }}>
       Over deze talen
     </p>
-    <p style={{ fontSize: "13px", color: "#4b5563", lineHeight: 1.7, fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
+    <p style={{ fontSize: "0.85rem", color: "#3d4039", lineHeight: 1.7, fontWeight: 300, fontFamily: "'Cormorant Garamond', serif" }}>
       Opgegroeid in Nederland, gevormd door culturen. Nederlands als moedertaal, Engels als tweede natuur, Braziliaans Portugees als brug naar een nieuwe wereld.
     </p>
-    <div style={{ marginTop: "1rem", display: "flex", gap: "8px" }}>
-      {["🇳🇱", "🇬🇧", "🇧🇷"].map((f) => (
-        <span key={f} style={{ fontSize: "24px" }}>{f}</span>
-      ))}
+    <div style={{ marginTop: "0.75rem", fontSize: "20px", display: "flex", gap: "6px" }}>
+      🇳🇱 🇬🇧 🇧🇷
     </div>
   </div>
 );
 
 const signBack = (
   <div>
-    <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "0.75rem" }}>
+    <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "9px", letterSpacing: "0.16em", textTransform: "uppercase", color: "#3B6D11", marginBottom: "0.6rem" }}>
       Over gebarentaal
     </p>
-    <p style={{ fontSize: "13px", color: "#4b5563", lineHeight: 1.7, fontFamily: "'Outfit', sans-serif", fontWeight: 300 }}>
+    <p style={{ fontSize: "0.85rem", color: "#3d4039", lineHeight: 1.7, fontWeight: 300, fontFamily: "'Cormorant Garamond', serif" }}>
       ASL en NGT zijn volwaardige talen met eigen grammatica en cultuur. Visuele communicatie opent een wereld die velen missen.
     </p>
-    <div style={{ marginTop: "1rem", display: "flex", gap: "8px", alignItems: "center" }}>
-      <span style={{ fontSize: "24px" }}>🤟</span>
-      <span style={{ fontSize: "13px", fontFamily: "'DM Mono', monospace", color: "var(--accent)", opacity: 0.6 }}>ASL · NGT</span>
+    <div style={{ marginTop: "0.75rem", display: "flex", gap: "8px", alignItems: "center" }}>
+      <span style={{ fontSize: "20px" }}>🤟</span>
+      <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "#3B6D11", opacity: 0.65 }}>ASL · NGT</span>
     </div>
   </div>
 );
 
 export default function Home() {
   return (
-    <main className="min-h-screen" style={{ background: "#fafaf9" }}>
-      {/* Grid background */}
+    <main style={{ minHeight: "100vh", background: "#faf9f5", position: "relative" }}>
+
+      {/* Gelinieerde achtergrond */}
       <div
-        className="fixed inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-          opacity: 0.45,
-        }}
         aria-hidden="true"
+        style={{
+          position: "fixed", inset: 0, pointerEvents: "none", opacity: 0.18,
+          backgroundImage: "repeating-linear-gradient(transparent, transparent 39px, #97C459 39px, #97C459 40px)",
+        }}
       />
 
-      <div className="relative max-w-2xl mx-auto px-8 py-20">
+      <div style={{ position: "relative", maxWidth: "680px", margin: "0 auto", padding: "2.5rem 2rem 3.5rem" }}>
 
-        {/* Tag */}
-        <p
-          className="opacity-0 animate-fade-up-1 font-mono text-[11px] tracking-[0.15em] uppercase mb-5"
-          style={{ color: "var(--accent)", fontFamily: "'DM Mono', monospace" }}
-        >
+        {/* Eyebrow */}
+        <p className="animate-fade-up-1" style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#3B6D11", marginBottom: "1.1rem" }}>
           Portfolio — 2026
         </p>
 
-        {/* Name */}
-        <h1
-          className="opacity-0 animate-fade-up-2 leading-none tracking-tight mb-1"
-          style={{
-            fontFamily: "'DM Serif Display', serif",
-            fontSize: "clamp(3rem, 10vw, 5rem)",
-            fontWeight: 400,
-            letterSpacing: "-0.02em",
-          }}
-        >
-          <em style={{ color: "var(--accent)", fontStyle: "italic" }}>Kees</em>
+        {/* Naam */}
+        <h1 className="animate-fade-up-2" style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3rem, 9vw, 4.8rem)", fontWeight: 400, lineHeight: 1, letterSpacing: "-0.01em" }}>
+          <em style={{ fontStyle: "italic", color: "#3B6D11" }}>Kees</em>
         </h1>
 
-        {/* Divider */}
-        <div
-          className="opacity-0 animate-fade-up-3 mt-6 mb-6 h-[2px] w-12 rounded-full"
-          style={{ background: "var(--accent)" }}
-        />
+        {/* Streep */}
+        <div className="animate-fade-up-3" style={{ width: "56px", height: "1px", background: "#639922", margin: "1.4rem 0" }} />
 
-        {/* Welcome text */}
-        <p
-          className="opacity-0 animate-fade-up-4 text-base leading-relaxed max-w-lg"
-          style={{
-            color: "#6b7280",
-            fontFamily: "'Outfit', sans-serif",
-            fontWeight: 300,
-            lineHeight: 1.8,
-          }}
-        >
-          Welkom. Ik ben Kees — iemand die zich moeiteloos aanpast aan elke
-          context, cultuur of uitdaging. Of het nu gaat om communicatie,
-          technologie of samenwerking: ik vind altijd mijn weg.
+        {/* Welkomstbericht */}
+        <p className="animate-fade-up-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.05rem", fontWeight: 300, lineHeight: 1.85, color: "#3d4039", maxWidth: "490px" }}>
+          Welkom. Ik ben Kees — iemand die zich moeiteloos aanpast aan elke context, cultuur of uitdaging. Of het nu gaat om communicatie, technologie of samenwerking: ik vind altijd mijn weg.
         </p>
 
-        {/* Skill cards */}
-        <div className="opacity-0 animate-fade-up-5 grid grid-cols-2 gap-4 mt-10">
+        {/* Kaartjes */}
+        <div className="animate-fade-up-5" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginTop: "2rem" }}>
           <SkillCard
-            index="01"
-            category="Talen"
-            title="Gesproken"
-            titleLine2="Talen"
+            index="01" numeral="I" category="Talen"
+            title="Gesproken" titleLine2="Talen"
             skills={["Nederlands", "Engels", "Portugees (BR)"]}
             barWidth={95}
             backContent={spokenBack}
           />
           <SkillCard
-            index="02"
-            category="Gebarentaal"
-            title="Visuele"
-            titleLine2="Talen"
+            index="02" numeral="II" category="Gebarentaal"
+            title="Visuele" titleLine2="Talen"
             skills={["ASL", "NGT", "Visuele communicatie"]}
             barWidth={82}
-            dashed
             backContent={signBack}
           />
         </div>
 
-        {/* Language flags section */}
-        <div className="opacity-0 animate-fade-up-6">
+        {/* Talen met vlaggen */}
+        <div className="animate-fade-up-6" style={{ marginTop: "1.75rem" }}>
           <LanguageFlags />
         </div>
 
-        {/* Adaptivity chips */}
-        <div className="opacity-0 animate-fade-up-6 mt-6">
-          <p
-            className="font-mono text-[11px] tracking-[0.13em] uppercase mb-3"
-            style={{ color: "var(--accent)", fontFamily: "'DM Mono', monospace" }}
-          >
+        {/* Chips */}
+        <div className="animate-fade-up-7" style={{ marginTop: "1.5rem" }}>
+          <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "9px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#3B6D11", marginBottom: "0.65rem" }}>
             05 — Adaptiviteit
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "7px" }}>
             {chips.map((chip) => (
-              <span
-                key={chip.label}
-                className="text-xs px-3 py-1 rounded-full transition-colors duration-200 cursor-default"
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontWeight: 400,
-                  color: "#6b7280",
-                  background: "var(--accent-dim)",
-                  border: `0.5px ${chip.dashed ? "dashed" : "solid"} var(--accent-soft)`,
-                }}
-              >
+              <span key={chip.label} style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "0.75rem", fontWeight: 300,
+                color: "#3d4039",
+                background: "#EAF3DE",
+                borderRadius: "2px",
+                padding: "3px 11px",
+                border: `0.5px ${chip.dashed ? "dashed" : "solid"} #C0DD97`,
+              }}>
                 {chip.label}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Footer line */}
-        <div className="opacity-0 animate-fade-up-7 flex items-center gap-3 mt-9">
-          <div
-            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-            style={{ background: "var(--accent)" }}
-          />
-          <span
-            className="font-mono text-[11px] tracking-[0.1em] uppercase"
-            style={{
-              color: "#9ca3af",
-              fontFamily: "'DM Mono', monospace",
-            }}
-          >
+        {/* Footer */}
+        <div className="animate-fade-up-8" style={{ marginTop: "1.75rem", display: "flex", alignItems: "center", gap: "10px" }}>
+          <div style={{ width: "18px", height: "1px", background: "#639922" }} />
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#8a9485" }}>
             Beschikbaar · NL · EN · PT-BR · ASL · NGT
           </span>
         </div>
+
       </div>
     </main>
   );
