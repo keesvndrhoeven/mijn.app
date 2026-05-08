@@ -171,6 +171,7 @@ export default function Home() {
         <div className="opacity-0 animate-fade-up-5 grid grid-cols-2 gap-4 mt-10">
           <SkillCard
             index="01"
+            numeral="I"
             category="Talen"
             title="Gesproken"
             titleLine2="Talen"
@@ -180,12 +181,12 @@ export default function Home() {
           />
           <SkillCard
             index="02"
+            numeral="II"
             category="Gebarentaal"
             title="Visuele"
             titleLine2="Talen"
             skills={["ASL", "NGT", "Visuele communicatie"]}
             barWidth={82}
-            dashed
             backContent={signBack}
           />
         </div>
