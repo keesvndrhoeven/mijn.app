@@ -41,6 +41,73 @@ const signBack = (
   </div>
 );
 
+type AppEntry = {
+  name: string;
+  type: string;
+  tip: string;
+  tag: "Gratis" | "Freemium" | "Betaald";
+};
+
+type LangGuide = {
+  flag: string[];
+  label: string;
+  sublabel: string;
+  apps: AppEntry[];
+};
+
+const langGuide: LangGuide[] = [
+  {
+    flag: ["🇧🇷"],
+    label: "Portugees (BR)",
+    sublabel: "Onderhoud & verdieping",
+    apps: [
+      { name: "Duolingo", type: "Gamified oefening", tip: "Dagelijkse herhaling. Heeft een eigen Braziliaans Portugees cursus.", tag: "Gratis" },
+      { name: "Anki", type: "Flashcards / SRS", tip: "Spaced repetition voor woordenschat. Zoek PT-BR decks op AnkiWeb.", tag: "Gratis" },
+      { name: "italki", type: "Gespreksoefening", tip: "Spreek met native speakers. Goedkoper dan traditionele les.", tag: "Freemium" },
+      { name: "Language Transfer", type: "Audio cursus", tip: "Gratis podcast-stijl cursus. Sterk voor grammatica-intuïtie.", tag: "Gratis" },
+    ],
+  },
+  {
+    flag: ["🇬🇧"],
+    label: "Engels",
+    sublabel: "Verfijning & nuance",
+    apps: [
+      { name: "BBC Learning English", type: "Nieuws & audio", tip: "Gratis content voor gevorderden met uitdrukkingen en intonatie.", tag: "Gratis" },
+      { name: "Speechling", type: "Uitspraak", tip: "Stuur inspraken in, krijg feedback van native speaker coaches.", tag: "Freemium" },
+      { name: "Elllo", type: "Luisteroefening", tip: "Duizenden oefeningen met transcripties in verschillende accenten.", tag: "Gratis" },
+    ],
+  },
+  {
+    flag: ["🇺🇸", "🇳🇱"],
+    label: "ASL & NGT",
+    sublabel: "Gebarentaal",
+    apps: [
+      { name: "Handspeak", type: "ASL woordenboek", tip: "Groot online ASL woordenboek met video per gebaar.", tag: "Gratis" },
+      { name: "Spread the Sign", type: "Meerdere gebarentalen", tip: "Bevat zowel ASL als NGT. Zoekbaar per gebaar.", tag: "Gratis" },
+      { name: "SignSchool", type: "ASL lessen", tip: "Gestructureerde ASL cursus met video. Goed voor alle niveaus.", tag: "Freemium" },
+      { name: "NGT Signbank", type: "NGT woordenboek", tip: "Officieel NGT woordenboek van de Radboud Universiteit.", tag: "Gratis" },
+    ],
+  },
+];
+
+const tagStyle: Record<AppEntry["tag"], React.CSSProperties> = {
+  Gratis: {
+    background: "rgba(16,185,129,0.08)",
+    color: "#059669",
+    border: "0.5px solid rgba(16,185,129,0.25)",
+  },
+  Freemium: {
+    background: "rgba(245,158,11,0.08)",
+    color: "#b45309",
+    border: "0.5px solid rgba(245,158,11,0.25)",
+  },
+  Betaald: {
+    background: "rgba(107,114,128,0.08)",
+    color: "#6b7280",
+    border: "0.5px solid rgba(107,114,128,0.2)",
+  },
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen" style={{ background: "#fafaf9" }}>
@@ -127,6 +194,195 @@ export default function Home() {
         <div className="opacity-0 animate-fade-up-6">
           <LanguageFlags />
         </div>
+
+        {/* ── App Guide ── */}
+        <div className="opacity-0 animate-fade-up-6 mt-10">
+          <p
+            className="font-mono text-[11px] tracking-[0.13em] uppercase mb-1"
+            style={{ color: "var(--accent)", fontFamily: "'DM Mono', monospace" }}
+          >
+            06 — Apps & Hulpmiddelen
+          </p>
+          <h2
+            style={{
+              fontFamily: "'DM Serif Display', serif",
+              fontSize: "clamp(1.6rem, 5vw, 2.2rem)",
+              fontWeight: 400,
+              fontStyle: "italic",
+              letterSpacing: "-0.01em",
+              color: "inherit",
+              margin: "0.25rem 0 0.3rem",
+              lineHeight: 1.15,
+            }}
+          >
+            Hoe leer je een taal?
+          </h2>
+          <p
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 300,
+              fontSize: "13px",
+              color: "#9ca3af",
+              marginBottom: "1.75rem",
+            }}
+          >
+            Per taal — de beste apps en tools om verder te komen.
+          </p>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}>
+            {langGuide.map((lang, i) => (
+              <div key={lang.label}>
+                {/* Language header */}
+                <div style={{ display: "flex", alignItems: "baseline", gap: "8px", marginBottom: "0.75rem" }}>
+                  <span style={{ fontSize: "16px" }}>{lang.flag.join(" ")}</span>
+                  <span
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontWeight: 500,
+                      fontSize: "14px",
+                      color: "#374151",
+                    }}
+                  >
+                    {lang.label}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "'DM Mono', monospace",
+                      fontSize: "10px",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: "#9ca3af",
+                    }}
+                  >
+                    {lang.sublabel}
+                  </span>
+                </div>
+
+                {/* App cards */}
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+                    gap: "8px",
+                  }}
+                >
+                  {lang.apps.map((app) => (
+                    <div
+                      key={app.name}
+                      style={{
+                        background: "#ffffff",
+                        border: "0.5px solid rgba(0,0,0,0.08)",
+                        borderRadius: "10px",
+                        padding: "0.75rem 1rem",
+                        transition: "border-color 0.15s",
+                      }}
+                    >
+                      <span
+                        style={{
+                          display: "inline-block",
+                          fontSize: "10px",
+                          fontFamily: "'DM Mono', monospace",
+                          letterSpacing: "0.06em",
+                          textTransform: "uppercase",
+                          padding: "2px 7px",
+                          borderRadius: "20px",
+                          marginBottom: "6px",
+                          ...tagStyle[app.tag],
+                        }}
+                      >
+                        {app.tag}
+                      </span>
+                      <p
+                        style={{
+                          fontFamily: "'Outfit', sans-serif",
+                          fontWeight: 500,
+                          fontSize: "13px",
+                          color: "#1f2937",
+                          margin: "0 0 2px",
+                        }}
+                      >
+                        {app.name}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "'DM Mono', monospace",
+                          fontSize: "10px",
+                          letterSpacing: "0.06em",
+                          color: "#9ca3af",
+                          textTransform: "uppercase",
+                          margin: "0 0 6px",
+                        }}
+                      >
+                        {app.type}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "'Outfit', sans-serif",
+                          fontWeight: 300,
+                          fontSize: "12px",
+                          color: "#6b7280",
+                          lineHeight: 1.55,
+                          margin: 0,
+                        }}
+                      >
+                        {app.tip}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Divider between languages, not after last */}
+                {i < langGuide.length - 1 && (
+                  <div
+                    style={{
+                      marginTop: "1.5rem",
+                      borderTop: "0.5px solid rgba(0,0,0,0.07)",
+                    }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Tip box */}
+          <div
+            style={{
+              marginTop: "1.5rem",
+              background: "rgba(0,0,0,0.025)",
+              borderRadius: "10px",
+              padding: "1rem 1.25rem",
+              border: "0.5px solid rgba(0,0,0,0.06)",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: "10px",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "var(--accent)",
+                marginBottom: "6px",
+              }}
+            >
+              Aanpak
+            </p>
+            <p
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 300,
+                fontSize: "13px",
+                color: "#6b7280",
+                lineHeight: 1.65,
+                margin: 0,
+              }}
+            >
+              Consistentie wint van intensiteit. Tien minuten per dag is effectiever
+              dan twee uur in het weekend. Combineer een actieve methode (spreken,
+              schrijven) met een passieve (luisteren, lezen).
+            </p>
+          </div>
+        </div>
+        {/* ── Einde App Guide ── */}
 
         {/* Adaptivity chips */}
         <div className="opacity-0 animate-fade-up-6 mt-6">
